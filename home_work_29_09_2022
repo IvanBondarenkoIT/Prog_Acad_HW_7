@@ -1,0 +1,29 @@
+# 1. Напишіть програму, яка порахує скільки літер «b» у введеному рядку тексту.
+user_string = input("Enter string - ")
+serching_char = 'b'
+# sorted(user_string.lower())
+# char_position = user_string.find(serching_char)
+# counter = 0
+# while user_string[char_position] == serching_char:
+#     counter += 1
+#
+from collections import Counter
+cnt = Counter(user_string)
+print(cnt[serching_char])
+
+# 2. Користувач вводить з клавіатури ім'я людини. Написати програму для перевірки введеного ім'я на валідність (мається на увазі, що, наприклад, в імені людини не може бути цифр, воно повинно починатися з великої літери, за якою повинні йти маленькі).
+user_name = input("Enter name - ")
+print(f"{user_name} - valid name" if user_name == user_name.capitalize() and user_name.isalpha() else f"{user_name} - Invalid name")
+
+# # 3. Напишіть програму, яка обчислить суму всіх кодів символів рядка.
+print(sum(map(ord,user_string)))
+
+# 4. Виведіть на екран 10 рядків із значенням числа Pi. У першому рядку має бути 2 знаки після коми, у другому 3 і так далі.
+import math
+print("\n".join([str(round(math.pi,i + 2)) for i in range(10)]))
+
+# 5. Вводиться з клавіатури користувачем текст. Знайти в ньому найдовше слово та вивести його на екран.
+user_string = input("Enter string - ")
+user_string = user_string.split()
+map_list = list(map(len,user_string))
+print(user_string[map_list.index(max(map_list))])
