@@ -27,3 +27,37 @@ user_string = input("Enter string - ")
 user_string = user_string.split()
 map_list = list(map(len,user_string))
 print(user_string[map_list.index(max(map_list))])
+
+
+'''Додаткові задачі до домашнього завдання:
+1*. Вовочка, сидячи на уроці, писав поспіль однакові слова (слово може складатися з однієї літери). Коли Марія Іванівна забрала у нього зошит, там був один рядок тексту. Напишіть програму, яка визначить найкоротше слово з написаних Вовочкою. Наприклад:
+aaaaaaa - Вовочка писав слово - "a"
+ititititit - Вовочка писав слово - "it"
+catcatcatcat - Вовочка писав слово - "cat"
+2*. Напишіть програму для очищення тексту від HTML-тегів. Більше про html-теги https://html5book.ru/html-tags/
+Також необхідно врахувати кілька особливостей:
+- крім одинарних тегів є парні теги, наприклад <div> </div>, тобто. перший тег відкриває, а другий закриває.
+- тег у собі може містити купу додаткової інформації. Наприклад <div id="rcnt" style="clear:both;position:relative;zoom:1">'''
+
+# 1*.
+user_string = input("Enter string - ")
+ch = user_string[0]
+i = 1
+while user_string != ch*(len(user_string)//len(ch)):
+    ch += user_string[i]
+    i += 1
+print(ch)
+# if chars all diferent
+from collections import Counter
+cnt = Counter(user_string)
+print(''.join(cnt.keys()))
+
+# 2*.
+text = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html> <head>  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">  <title>Пример веб-страницы</title> </head> <body>  <h1>Заголовок</h1><!-- Комментарий --><p>Первый абзац.</p><p>Второй абзац.</p></body></html>'
+while True:
+   tag_start = text.find('<')
+   tag_end = text.find('>')
+   text = text.replace(text[tag_start : tag_end + 1], "")
+   if tag_start + tag_end < 0:
+       break
+print(text)
